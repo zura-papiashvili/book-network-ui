@@ -1,0 +1,38 @@
+<div class="container">
+  <div *ngIf="submitted; else codeForm">
+    <div *ngIf="isOkay; else activationError">
+      <h2>Your account has been activated successfully.</h2>
+      <p>You can now login to your account.</p>
+      <button class="btn btn-primary" (click)="redirectToLogin()">
+        Go To Login
+      </button>
+    </div>
+  </div>
+
+  <!-- Activation Error -->
+  <ng-template #activationError>
+    <div class="activation-error">
+      <h2>Activation Failed</h2>
+      <p>{{ message }}</p>
+      <button class="btn btn-primary" (click)="submitted = false">
+        Try Again
+      </button>
+    </div>
+  </ng-template>
+
+  <!-- Code Form -->
+  <ng-template #codeForm>
+    <div class="container">
+      <div class="text-center" style="width: 400px">
+        <h2>Type your activation code</h2>
+        <code-input
+          [isCodeHidden]="false"
+          [codeLength]="6"
+          [code]="'number'"
+          (codeCompleted)="onCodeComplete($event)"
+        >
+        </code-input>
+      </div>
+    </div>
+  </ng-template>
+</div>
