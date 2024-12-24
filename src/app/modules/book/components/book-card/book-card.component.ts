@@ -30,7 +30,7 @@ export class BookCardComponent {
     }
     // Use a random seed for a unique image each time
     const randomSeed = Math.random().toString(36).substring(2, 8); // Generates a random string
-    return `https://picsum.photos/seed/${randomSeed}/200/300`;
+    return `https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg`;
   }
 
   get manage(): boolean {

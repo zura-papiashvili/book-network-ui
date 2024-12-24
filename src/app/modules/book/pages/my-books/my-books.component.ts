@@ -69,7 +69,7 @@ export class MyBooksComponent implements OnInit {
   }
 
   editBook(book: BookResponse) {
-    throw new Error('Method not implemented.');
+    this.router.navigate(['/books/manage', book.id]);
   }
   shareBook(book: BookResponse) {
     throw new Error('Method not implemented.');
