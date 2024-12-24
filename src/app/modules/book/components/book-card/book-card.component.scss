@@ -1,0 +1,62 @@
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.card-title,
+.card-subtitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card img {
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.card p {
+    margin: 0.5rem 0;
+}
+
+.card p:last-child {
+    margin-bottom: 0;
+}
+
+.synopsis {
+    height: 60px;
+    /* Adjust based on desired number of visible lines */
+    overflow: hidden;
+    /* Hide overflow */
+    text-overflow: ellipsis;
+    /* Add ellipsis for truncated text */
+    display: -webkit-box;
+    /* Enable multiline truncation */
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    /* Limit to 3 lines (adjust as needed) */
+    -webkit-box-orient: vertical;
+    /* Required for line clamping */
+    font-size: 0.9rem;
+    /* Optional: Adjust font size */
+}
+
+div {
+    &.card {
+        max-height: 480px;
+        min-height: 480px;
+    }
+}
+
+i {
+    cursor: pointer;
+}

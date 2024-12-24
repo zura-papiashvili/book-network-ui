@@ -15,7 +15,7 @@ import { BookCardComponent } from '../../components/book-card/book-card.componen
 export class BookListComponent implements OnInit {
   bookResponse: PageResponseBookResponse = {};
   page: number = 0;
-  size: number = 5;
+  size: number = 6;
   constructor(private bookService: BookService, private router: Router) {}
 
   ngOnInit() {
