@@ -26,7 +26,7 @@ export class BookCardComponent {
 
   get bookCover(): string | undefined {
     if (this._book.cover) {
-      return '' + this._book.cover;
+      return 'data:image/jpg;base64,' + this._book.cover;
     }
     // Use a random seed for a unique image each time
     const randomSeed = Math.random().toString(36).substring(2, 8); // Generates a random string
