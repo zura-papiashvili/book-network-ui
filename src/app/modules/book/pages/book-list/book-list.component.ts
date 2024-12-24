@@ -15,7 +15,7 @@ import { BookCardComponent } from '../../components/book-card/book-card.componen
 export class BookListComponent implements OnInit {
   bookResponse: PageResponseBookResponse = {};
   page: number = 0;
-  size: number = 6;
+  size: number = 3;
   constructor(private bookService: BookService, private router: Router) {}
 
   ngOnInit() {
@@ -37,5 +37,29 @@ export class BookListComponent implements OnInit {
           console.log(error);
         },
       });
+  }
+
+  goToLastPage() {
+    this.page = (this.bookResponse.totalPages as number) - 1;
+    this.findAllBooks();
+  }
+  goToNextPage() {
+    this.page++;
+    this.findAllBooks();
+  }
+  goToPage(pageIndex: number) {
+    this.page = pageIndex;
+    this.findAllBooks();
+  }
+  goToPreviousPage() {
+    this.page--;
+    this.findAllBooks();
+  }
+  goToFirstPage() {
+    this.page = 0;
+    this.findAllBooks();
+  }
+  get isLastPage(): boolean {
+    return this.page === (this.bookResponse.totalPages as number) - 1;
   }
 }
