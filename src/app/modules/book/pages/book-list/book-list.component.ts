@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../../../services/services/book.service';
 import { Router } from '@angular/router';
-import { PageResponseBookResponse } from '../../../../services/models';
+import {
+  BookResponse,
+  PageResponseBookResponse,
+} from '../../../../services/models';
 import { CommonModule } from '@angular/common';
 import { BookCardComponent } from '../../components/book-card/book-card.component';
 
@@ -16,6 +19,9 @@ export class BookListComponent implements OnInit {
   bookResponse: PageResponseBookResponse = {};
   page: number = 0;
   size: number = 3;
+  message: string = '';
+  level: string = 'success';
+
   constructor(private bookService: BookService, private router: Router) {}
 
   ngOnInit() {
@@ -61,5 +67,25 @@ export class BookListComponent implements OnInit {
   }
   get isLastPage(): boolean {
     return this.page === (this.bookResponse.totalPages as number) - 1;
+  }
+
+  borrowBook(book: BookResponse) {
+    this.message = '';
+    this.level = '';
+    this.bookService
+      .borrowBook({
+        'book-id': book.id as number,
+      })
+      .subscribe({
+        next: (response) => {
+          this.level = 'success';
+          this.message = 'Book successfully added to your borrowed list';
+        },
+        error: (error) => {
+          this.level = 'error';
+          this.message = error.error.error;
+          console.log(error);
+        },
+      });
   }
 }

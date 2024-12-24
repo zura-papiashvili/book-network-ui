@@ -19,6 +19,6 @@ export const routes: Routes = [
   {
     path: 'books',
     loadChildren: () =>
-      import('./modules/book/book.module').then((m) => m.BookModule),
+      import('./modules/book/book-routing.module').then((m) => m.bookRoutes),
   },
 ];
