@@ -72,9 +72,27 @@ export class MyBooksComponent implements OnInit {
     this.router.navigate(['/books/manage', book.id]);
   }
   shareBook(book: BookResponse) {
-    throw new Error('Method not implemented.');
+    this.bookService
+      .updateShareableStatus({ 'book-id': book.id as number })
+      .subscribe({
+        next: () => {
+          book.shareable = !book.shareable;
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
   }
   archiveBook(book: BookResponse) {
-    throw new Error('Method not implemented.');
+    this.bookService
+      .updateArchivedStatus({ 'book-id': book.id as number })
+      .subscribe({
+        next: () => {
+          book.archived = !book.archived;
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
   }
 }

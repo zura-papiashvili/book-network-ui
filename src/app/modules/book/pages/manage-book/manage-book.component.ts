@@ -64,21 +64,30 @@ export class ManageBookComponent implements OnInit {
   saveBook() {
     this.bookService.saveBook({ body: this.bookRequest }).subscribe({
       next: (response) => {
-        this.bookService
-          .uploadBookCover({
-            'book-id': response,
-            body: {
-              cover: this.selectedBookCover,
-            },
-          })
-          .subscribe({
-            next: () => {
-              this.router.navigate(['/books/my-books']);
-            },
-          });
+        if (this.selectedBookCover) {
+          // If a book cover is provided, upload it
+          this.bookService
+            .uploadBookCover({
+              'book-id': response,
+              body: {
+                cover: this.selectedBookCover,
+              },
+            })
+            .subscribe({
+              next: () => {
+                this.router.navigate(['/books/my-books']);
+              },
+              error: (error) => {
+                this.errorMsg = error.error.validationErrors; // Handle upload errors
+              },
+            });
+        } else {
+          // If no book cover, directly navigate
+          this.router.navigate(['/books/my-books']);
+        }
       },
       error: (error) => {
-        this.errorMsg = error.error.validationErrors;
+        this.errorMsg = error.error.validationErrors; // Handle save errors
       },
     });
   }
