@@ -1,4 +1,36 @@
-# BookNetworkUi
+
+---
+
+### **Frontend README (Angular)**
+
+```markdown
+# 📚 Book Sharing Network - Frontend
+
+The **Book Sharing Network Frontend** is built using **Angular**. It provides a user-friendly interface for users to browse, upload, and share books.
+
+## 🌟 Features
+
+- **Responsive Design** for a seamless experience across devices.
+- **User Authentication** with JWT integration.
+- **Dynamic Book Listings** powered by API integration.
+- Deployed on **AWS EC2**.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (16.x or later)
+- Angular CLI
+- AWS EC2 Instance or any hosting platform
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/<your-username>/book-sharing-frontend.git
+   cd book-sharing-frontend
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
 
